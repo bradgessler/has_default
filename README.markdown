@@ -6,13 +6,13 @@ Specify a "default" instance that is to be returned for an ActiveRecord model wh
 
 Install the has_default gem
 
-    gem install bradgessler-has_default
+    gem install has_default --source http://gemcutter.org
     
 Then configure in rails
 
-    config.gem 'bradgessler-has_default',
+    config.gem 'has_default',
       :lib => 'has_default',
-      :source => 'http://gems.github.com'
+      :source => 'http://gemcutter.org'
 
 For whatever model you need to set a default for, run the a similar migration
 
