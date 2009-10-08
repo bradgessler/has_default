@@ -58,7 +58,7 @@ Maybe in our seed.rb file in Rails or when we startup our application for the fi
     Plan.create(:name => 'Medium')
     Plan.create(:name => 'High')
 
-Finally. somewhere in our application (maybe in AccountsController#new) we need to call Account#new and grab the plan.
+Finally, somewhere in our application (maybe in AccountsController#new), we call Account#new and the set_default_plan method sets the plan.
 
     Account.new.plan.name # => 'Free'
 
