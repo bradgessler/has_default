@@ -34,6 +34,8 @@ For whatever model you need to set a default for, run the a similar migration
     
 # Example
 
+Let's pretend our paid web application includes the models Plan and Account. When somebody creates an account, we want to make sure that at the very least it has a "Free Plan" associated with it.
+
     class Plan
       has_many :accounts
       has_default
@@ -50,11 +52,18 @@ For whatever model you need to set a default for, run the a similar migration
       end
     end
 
+Maybe in our seed.rb file in Rails or when we startup our application for the first time, we specify the plans that we're going to sell.
+
     Plan.create(:name => 'Free', :default => true)
     Plan.create(:name => 'Medium')
     Plan.create(:name => 'High')
 
+Finally. somewhere in our application (maybe in AccountsController#new) we need to call Account#new and grab the plan.
+
     Account.new.plan.name # => 'Free'
+
+Down the road when we want to change the default plan that's assigned to an account, we just set default to true and has_default takes care of the rest.
+
     Plan.find_by_name('High').update_attribute(:default, true)
     Account.new.plan.name # => 'High'
 
